@@ -21,7 +21,7 @@
 const config = {
     // WebSocket connection settings - How to connect to Streamer.bot
     websocket: {
-        host: 'localhost',                // IP address of Streamer.bot (usually localhost)
+        host: '127.0.0.1',                // IP address of Streamer.bot (usually localhost)
         port: '8080',                     // Port number Streamer.bot is listening on
         path: '/',                        // WebSocket path (usually just '/')
         password: '',                     // Password if Streamer.bot requires one (leave empty if none)
