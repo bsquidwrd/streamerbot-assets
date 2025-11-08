@@ -1,4 +1,3 @@
-
 /**
  * ═══════════════════════════════════════════════════════════════════════════════════════════════════
  *                                 📋 OVERLAY SETTINGS 📋
@@ -12,20 +11,35 @@
  *  
  *  💡 Tip: Time values are in milliseconds (1000 = 1 second)
  *  💡 Tip: Each setting has helpful comments explaining what it does
+ *  💡 Tip: URL parameters can override connection settings (e.g., ?host=192.168.1.100&port=8080&password=mypass)
  *  
  *  Feel free to experiment - you can always change things back! 🎨
  * ═══════════════════════════════════════════════════════════════════════════════════════════════════
  */
 
+// Helper function to get URL parameters
+function getUrlParams() {
+    const urlParams = new URLSearchParams(window.location.search);
+    return {
+        host: urlParams.get('host'),
+        port: urlParams.get('port'),
+        path: urlParams.get('path'),
+        password: urlParams.get('password')
+    };
+}
+
+// Get URL parameters for connection settings
+const urlParams = getUrlParams();
+
 // Configuration object - Modify these values to customize your overlay behavior
 const config = {
     // WebSocket connection settings - How to connect to Streamer.bot
     websocket: {
-        host: '127.0.0.1',                // IP address of Streamer.bot (usually localhost)
-        port: '8080',                     // Port number Streamer.bot is listening on
-        path: '/',                        // WebSocket path (usually just '/')
-        password: '',                     // Password if Streamer.bot requires one (leave empty if none)
-        reconnectionDelay: 5000           // How long to wait before reconnecting (5 seconds)
+        host: urlParams.host || '127.0.0.1', // IP address of Streamer.bot (usually localhost)
+        port: urlParams.port || '8080',      // Port number Streamer.bot is listening on
+        path: urlParams.path || '/',         // WebSocket path (usually just '/')
+        password: urlParams.password || '',  // Password if Streamer.bot requires one (leave empty if none)
+        reconnectionDelay: 5000              // How long to wait before reconnecting (5 seconds)
     },
     
     // Timing settings - How long things appear and fade (all values in milliseconds)
