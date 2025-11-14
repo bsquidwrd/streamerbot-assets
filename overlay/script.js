@@ -549,7 +549,7 @@ function showCustomOverlay(eventData) {
     // Check if overlaySource is a URL (has protocol) or a local file path
     const isUrl = /^(https?|ftp|file|data|blob):/i.test(overlaySource);
     if (!isUrl) {
-        overlaySource = 'http://absolute/' + overlaySource;
+        overlaySource = 'https://absolute/' + overlaySource;
         console.log('Converted local file path to:', overlaySource);
     } else {
         console.log('Using URL as provided:', overlaySource);
